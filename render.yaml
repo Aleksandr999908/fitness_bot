@@ -1,0 +1,15 @@
+services:
+  - type: worker  # используем worker для polling
+    name: fitness-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        value: gpt-4o-mini
+      - key: LLM_API_BASE
+        value: https://ask.chadgpt.ru/api/public
